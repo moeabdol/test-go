@@ -13,6 +13,7 @@ func init() {
 
 func main() {
 	http.HandleFunc("/", index)
+	http.Handle("/assets/", http.StripPrefix("/assets", http.FileServer((http.Dir("public")))))
 	http.ListenAndServe(":9080", nil)
 }
 
